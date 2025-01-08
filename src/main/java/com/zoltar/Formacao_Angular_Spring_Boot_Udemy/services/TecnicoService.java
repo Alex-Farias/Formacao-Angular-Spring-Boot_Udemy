@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.Tecnico;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.repositories.TecnicoRepository;
+import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.services.exceptions.ObjectnotFoundException;
 
 @Service
 public class TecnicoService {
@@ -15,6 +16,6 @@ public class TecnicoService {
 	
 	public Tecnico findById(Integer id) {
 		Optional<Tecnico> obj = repository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontrado! ID:" + id));
 	}
 }
