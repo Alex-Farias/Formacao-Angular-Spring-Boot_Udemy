@@ -2,8 +2,10 @@ package com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.dtos.ClienteDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
@@ -27,6 +29,17 @@ public class Cliente extends Pessoa{
 		super(id, nome, cpf, email, senha);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Cliente(ClienteDTO obj) {
+		super();
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.cpf = obj.getCpf();
+		this.email = obj.getEmail();
+		this.senha = obj.getSenha();
+		this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+		this.dataCriacao = obj.getDataCriacao();
+ 	}
 
 	public List<Chamado> getChamados() {
 		return chamados;
