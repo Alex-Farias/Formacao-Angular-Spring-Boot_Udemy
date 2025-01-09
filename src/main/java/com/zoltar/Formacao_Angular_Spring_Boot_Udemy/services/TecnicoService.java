@@ -14,6 +14,8 @@ import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.repositories.TecnicoReposit
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.services.exceptions.DataIntegrityViolationException;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.services.exceptions.ObjectnotFoundException;
 
+import jakarta.validation.Valid;
+
 @Service
 public class TecnicoService {
 	@Autowired
@@ -32,12 +34,20 @@ public class TecnicoService {
 
 	public Tecnico create(TecnicoDTO objDTO) {
 		objDTO.setId(null);
-		validaPorCpgEEmail(objDTO);
+		validaPorCpfEEmail(objDTO);
 		Tecnico newObj = new Tecnico(objDTO);
 		return repository.save(newObj);
 	}
 
-	private void validaPorCpgEEmail(TecnicoDTO objDTO) {
+	public Tecnico update(Integer id, @Valid TecnicoDTO objDTO) {
+		objDTO.setId(id);
+		Tecnico oldObj = findById(id);
+		validaPorCpfEEmail(objDTO);
+		oldObj = new Tecnico(objDTO);
+		return repository.save(oldObj);
+	}
+
+	private void validaPorCpfEEmail(TecnicoDTO objDTO) {
 		Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
 		if(obj.isPresent() && obj.get().getId() != objDTO.getId()) {
 			throw new DataIntegrityViolationException("CPF já cadastrado no sistema!");

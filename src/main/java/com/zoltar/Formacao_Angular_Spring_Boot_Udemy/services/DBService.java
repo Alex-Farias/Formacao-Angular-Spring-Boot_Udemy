@@ -26,10 +26,10 @@ public class DBService {
 	
 	public void instanciaDB() {
 		// TODO Auto-generated method stub
-		Tecnico tec = new Tecnico(null, "Valdir Cezar", "64653230268", "valdir@mail.com", "123");
+		Tecnico tec = new Tecnico(null, "Valdir Cezar", "550.482.150-95", "valdir@mail.com", "123");
 		tec.addPerfil(Perfil.ADMIN);
 		
-		Cliente cli = new Cliente(null, "Linus Torvalds", "80527954780", "torvalds@mail.com", "123");
+		Cliente cli = new Cliente(null, "Linus Torvalds", "818.403.970-04", "torvalds@mail.com", "123");
 		
 		Chamado cha = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec, cli);
 
