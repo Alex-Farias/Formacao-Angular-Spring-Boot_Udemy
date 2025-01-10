@@ -3,10 +3,10 @@ package com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.dtos;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.Chamado;
-
-import jakarta.validation.constraints.NotNull;
 
 public class ChamadoDTO implements Serializable{
 	/**

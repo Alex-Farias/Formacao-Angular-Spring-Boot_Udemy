@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,8 +21,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.Tecnico;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.dtos.TecnicoDTO;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.services.TecnicoService;
-
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/tecnicos")

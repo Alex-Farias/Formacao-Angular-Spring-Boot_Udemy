@@ -3,18 +3,19 @@ package com.zoltar.Formacao_Angular_Spring_Boot_Udemy.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.Pessoa;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.Cliente;
+import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.Pessoa;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.dtos.ClienteDTO;
-import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.repositories.PessoaRepository;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.repositories.ClienteRepository;
+import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.repositories.PessoaRepository;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.services.exceptions.DataIntegrityViolationException;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.services.exceptions.ObjectnotFoundException;
-
-import jakarta.validation.Valid;
 
 @Service
 public class ClienteService {
@@ -22,6 +23,8 @@ public class ClienteService {
 	private ClienteRepository repository;
 	@Autowired
 	private PessoaRepository pessoaRepository;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	public Cliente findById(Integer id) {
 		Optional<Cliente> obj = repository.findById(id);
@@ -34,6 +37,7 @@ public class ClienteService {
 
 	public Cliente create(ClienteDTO objDTO) {
 		objDTO.setId(null);
+		objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 		validaPorCpfEEmail(objDTO);
 		Cliente newObj = new Cliente(objDTO);
 		return repository.save(newObj);

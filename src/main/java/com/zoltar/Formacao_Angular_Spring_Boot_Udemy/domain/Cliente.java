@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zoltar.Formacao_Angular_Spring_Boot_Udemy.domain.dtos.ClienteDTO;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Cliente extends Pessoa{
