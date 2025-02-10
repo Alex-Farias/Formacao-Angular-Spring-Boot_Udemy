@@ -7,7 +7,6 @@ import {
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -27,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
 export const AuthInterceptorProvider = [
   {
-    privide: HTTP_INTERCEPTORS,
+    provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
   }
