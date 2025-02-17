@@ -18,7 +18,7 @@
 
         <div class="status-prioridade">
             <mat-form-field appearance="outline">
-                <mat-label>Selecione um status</mat-label>
+                <mat-label>{{retornaStatus(chamado.status)}}</mat-label>
                 <mat-select
                     [(ngModel)]="chamado.status"
                     name="status"
@@ -32,7 +32,7 @@
             </mat-form-field>
             
             <mat-form-field appearance="outline">
-                <mat-label>Selecione uma prioridade</mat-label>
+                <mat-label>{{retornaPrioridade(chamado.prioridade)}}</mat-label>
                 <mat-select
                     [(ngModel)]="chamado.prioridade"
                     name="prioridade"
@@ -48,7 +48,7 @@
 
         <div class="tecnico">
             <mat-form-field class="fullWidth" appearance="outline">
-                <mat-label>Selecione um técnico</mat-label>
+                <mat-label>{{chamado.nomeTecnico}}</mat-label>
                 <mat-select
                     [(ngModel)]="chamado.tecnico"
                     name="tecnico"
@@ -62,7 +62,7 @@
 
         <div class="cliente">
             <mat-form-field class="fullWidth" appearance="outline">
-                <mat-label>Selecione um cliente</mat-label>
+                <mat-label>{{chamado.nomeCliente}}</mat-label>
                 <mat-select
                     [(ngModel)]="chamado.cliente"
                     name="cliente"
@@ -79,10 +79,10 @@
                 <mat-label>Deixe uma observação</mat-label>
                 <textarea 
                     [(ngModel)]="chamado.observacoes"
-                    name="descricao"
+                    name="observacoes"
                     [formControl]="observacoes"
                     required
-                    class="descricao" 
+                    class="observacoes" 
                     matInput 
                     placeholder="Ex. Trocar bateria do notebook queimada"
                 ></textarea>
