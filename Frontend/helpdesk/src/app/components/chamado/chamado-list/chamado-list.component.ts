@@ -42,6 +42,7 @@ export class ChamadoListComponent implements OnInit {
   orderByStatus(status: any): void {
     let list: Chamado[] = []
     this.ELEMENT_DATA.forEach(element => {
+      console.log(element.status + ' e ' + status)
       if(element.status == status)
         list.push(element)
     })
