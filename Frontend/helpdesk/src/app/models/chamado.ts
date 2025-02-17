@@ -1,4 +1,4 @@
-export interface Chaamdo {
+export interface Chamado {
     id?: any;
     dataAbertura?: string;
     dataFechamento?: string;
