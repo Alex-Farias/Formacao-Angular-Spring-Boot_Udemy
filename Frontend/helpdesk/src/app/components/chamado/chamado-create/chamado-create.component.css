@@ -39,3 +39,7 @@ p {
     margin-top: 3rem;
     opacity: .5;
 }
+
+mat-option {
+    max-height: 5rem;
+}
