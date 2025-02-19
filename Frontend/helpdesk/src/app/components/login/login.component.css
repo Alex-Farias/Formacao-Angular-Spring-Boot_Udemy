@@ -34,3 +34,7 @@ img {
 button {
     margin-bottom: 1.5rem;
 }
+
+.mat-icon {
+    opacity: .6;
+}
